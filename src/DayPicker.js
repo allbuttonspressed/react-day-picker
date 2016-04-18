@@ -48,11 +48,125 @@ export default class DayPicker extends Component {
     fromMonth: PropTypes.instanceOf(Date),
     toMonth: PropTypes.instanceOf(Date),
 
+    onDayKeyDown: PropTypes.func,
+    onDayKeyDownCapture: PropTypes.func,
+    onDayKeyPress: PropTypes.func,
+    onDayKeyPressCapture: PropTypes.func,
+    onDayKeyUp: PropTypes.func,
+    onDayKeyUpCapture: PropTypes.func,
+    onDayFocus: PropTypes.func,
+    onDayFocusCapture: PropTypes.func,
+    onDayBlur: PropTypes.func,
+    onDayBlurCapture: PropTypes.func,
     onDayClick: PropTypes.func,
+    onDayClickCapture: PropTypes.func,
+    onDayContextMenu: PropTypes.func,
+    onDayContextMenuCapture: PropTypes.func,
+    onDayDoubleClick: PropTypes.func,
+    onDayDoubleClickCapture: PropTypes.func,
+    onDayDrag: PropTypes.func,
+    onDayDragCapture: PropTypes.func,
+    onDayDragEnd: PropTypes.func,
+    onDayDragEndCapture: PropTypes.func,
+    onDayDragEnter: PropTypes.func,
+    onDayDragEnterCapture: PropTypes.func,
+    onDayDragExit: PropTypes.func,
+    onDayDragExitCapture: PropTypes.func,
+    onDayDragLeave: PropTypes.func,
+    onDayDragLeaveCapture: PropTypes.func,
+    onDayDragOver: PropTypes.func,
+    onDayDragOverCapture: PropTypes.func,
+    onDayDragStart: PropTypes.func,
+    onDayDragStartCapture: PropTypes.func,
+    onDayDrop: PropTypes.func,
+    onDayDropCapture: PropTypes.func,
+    onDayMouseDown: PropTypes.func,
+    onDayMouseDownCapture: PropTypes.func,
     onDayMouseEnter: PropTypes.func,
+    onDayMouseEnterCapture: PropTypes.func,
     onDayMouseLeave: PropTypes.func,
-    onMonthChange: PropTypes.func,
+    onDayMouseLeaveCapture: PropTypes.func,
+    onDayMouseMove: PropTypes.func,
+    onDayMouseMoveCapture: PropTypes.func,
+    onDayMouseOut: PropTypes.func,
+    onDayMouseOutCapture: PropTypes.func,
+    onDayMouseOver: PropTypes.func,
+    onDayMouseOverCapture: PropTypes.func,
+    onDayMouseUp: PropTypes.func,
+    onDayMouseUpCapture: PropTypes.func,
+    onDayTouchCancel: PropTypes.func,
+    onDayTouchCancelCapture: PropTypes.func,
+    onDayTouchEnd: PropTypes.func,
+    onDayTouchEndCapture: PropTypes.func,
+    onDayTouchMove: PropTypes.func,
+    onDayTouchMoveCapture: PropTypes.func,
+    onDayTouchStart: PropTypes.func,
+    onDayTouchStartCapture: PropTypes.func,
+    onDayScroll: PropTypes.func,
+    onDayScrollCapture: PropTypes.func,
+    onDayWheel: PropTypes.func,
+    onDayWheelCapture: PropTypes.func,
+
+    onCaptionKeyDown: PropTypes.func,
+    onCaptionKeyDownCapture: PropTypes.func,
+    onCaptionKeyPress: PropTypes.func,
+    onCaptionKeyPressCapture: PropTypes.func,
+    onCaptionKeyUp: PropTypes.func,
+    onCaptionKeyUpCapture: PropTypes.func,
+    onCaptionFocus: PropTypes.func,
+    onCaptionFocusCapture: PropTypes.func,
+    onCaptionBlur: PropTypes.func,
+    onCaptionBlurCapture: PropTypes.func,
     onCaptionClick: PropTypes.func,
+    onCaptionClickCapture: PropTypes.func,
+    onCaptionContextMenu: PropTypes.func,
+    onCaptionContextMenuCapture: PropTypes.func,
+    onCaptionDoubleClick: PropTypes.func,
+    onCaptionDoubleClickCapture: PropTypes.func,
+    onCaptionDrag: PropTypes.func,
+    onCaptionDragCapture: PropTypes.func,
+    onCaptionDragEnd: PropTypes.func,
+    onCaptionDragEndCapture: PropTypes.func,
+    onCaptionDragEnter: PropTypes.func,
+    onCaptionDragEnterCapture: PropTypes.func,
+    onCaptionDragExit: PropTypes.func,
+    onCaptionDragExitCapture: PropTypes.func,
+    onCaptionDragLeave: PropTypes.func,
+    onCaptionDragLeaveCapture: PropTypes.func,
+    onCaptionDragOver: PropTypes.func,
+    onCaptionDragOverCapture: PropTypes.func,
+    onCaptionDragStart: PropTypes.func,
+    onCaptionDragStartCapture: PropTypes.func,
+    onCaptionDrop: PropTypes.func,
+    onCaptionDropCapture: PropTypes.func,
+    onCaptionMouseDown: PropTypes.func,
+    onCaptionMouseDownCapture: PropTypes.func,
+    onCaptionMouseEnter: PropTypes.func,
+    onCaptionMouseEnterCapture: PropTypes.func,
+    onCaptionMouseLeave: PropTypes.func,
+    onCaptionMouseLeaveCapture: PropTypes.func,
+    onCaptionMouseMove: PropTypes.func,
+    onCaptionMouseMoveCapture: PropTypes.func,
+    onCaptionMouseOut: PropTypes.func,
+    onCaptionMouseOutCapture: PropTypes.func,
+    onCaptionMouseOver: PropTypes.func,
+    onCaptionMouseOverCapture: PropTypes.func,
+    onCaptionMouseUp: PropTypes.func,
+    onCaptionMouseUpCapture: PropTypes.func,
+    onCaptionTouchCancel: PropTypes.func,
+    onCaptionTouchCancelCapture: PropTypes.func,
+    onCaptionTouchEnd: PropTypes.func,
+    onCaptionTouchEndCapture: PropTypes.func,
+    onCaptionTouchMove: PropTypes.func,
+    onCaptionTouchMoveCapture: PropTypes.func,
+    onCaptionTouchStart: PropTypes.func,
+    onCaptionTouchStartCapture: PropTypes.func,
+    onCaptionScroll: PropTypes.func,
+    onCaptionScrollCapture: PropTypes.func,
+    onCaptionWheel: PropTypes.func,
+    onCaptionWheelCapture: PropTypes.func,
+
+    onMonthChange: PropTypes.func,
 
     renderDay: PropTypes.func,
 
@@ -252,57 +366,48 @@ export default class DayPicker extends Component {
     }
   }
 
-  handleDayKeyDown(e, day, modifiers) {
+  handleEvent(eventName, e, day, modifiers) {
     e.persist();
-    switch (e.keyCode) {
-    case keys.LEFT:
-      Helpers.cancelEvent(e);
-      this.focusPreviousDay(e.target);
-      break;
-    case keys.RIGHT:
-      Helpers.cancelEvent(e);
-      this.focusNextDay(e.target);
-      break;
-    case keys.UP:
-      Helpers.cancelEvent(e);
-      this.focusPreviousWeek(e.target);
-      break;
-    case keys.DOWN:
-      Helpers.cancelEvent(e);
-      this.focusNextWeek(e.target);
-      break;
-    case keys.ENTER:
-    case keys.SPACE:
-      Helpers.cancelEvent(e);
-      if (this.props.onDayClick) {
-        this.handleDayClick(e, day, modifiers);
+
+    if (this.props[eventName]) {
+      this.props[eventName](e, day, modifiers);
+    }
+    if (e.isDefaultPrevented()) {
+      // If preventDefault() was called, prevent built-in actions
+      return;
+    }
+
+    if (eventName === "onDayKeyDown") {
+      switch (e.keyCode) {
+      case keys.LEFT:
+        Helpers.cancelEvent(e);
+        this.focusPreviousDay(e.target);
+        break;
+      case keys.RIGHT:
+        Helpers.cancelEvent(e);
+        this.focusNextDay(e.target);
+        break;
+      case keys.UP:
+        Helpers.cancelEvent(e);
+        this.focusPreviousWeek(e.target);
+        break;
+      case keys.DOWN:
+        Helpers.cancelEvent(e);
+        this.focusNextWeek(e.target);
+        break;
+      case keys.ENTER:
+      case keys.SPACE:
+        if (this.props.onDayClick) {
+          this.handleEvent("onDayClick", e, day, modifiers);
+        }
+        Helpers.cancelEvent(e);
+        break;
       }
-      break;
+    } else if (eventName === "onDayClick") {
+      if (modifiers.indexOf("outside") > -1) {
+        this.handleOutsideDayPress(day);
+      }
     }
-  }
-
-  handleCaptionClick(e, currentMonth) {
-    e.persist();
-    this.props.onCaptionClick(e, currentMonth);
-  }
-
-  handleDayClick(e, day, modifiers) {
-    e.persist();
-    if (modifiers.indexOf("outside") > -1) {
-      this.handleOutsideDayPress(day);
-    }
-
-    this.props.onDayClick(e, day, modifiers);
-  }
-
-  handleDayMouseEnter(e, day, modifiers) {
-    e.persist();
-    this.props.onDayMouseEnter(e, day, modifiers);
-  }
-
-  handleDayMouseLeave(e, day, modifiers) {
-    e.persist();
-    this.props.onDayMouseLeave(e, day, modifiers);
   }
 
   handleOutsideDayPress(day) {
@@ -343,13 +448,30 @@ export default class DayPicker extends Component {
     );
   }
 
-  renderMonth(date, i) {
-    const { locale, localeUtils, onCaptionClick, captionElement } = this.props;
+  cellEventProps(prefix, date, modifiers=null) {
+    const cellProps = {};
+    // Find all props with given prefix and use them as handler for the corresponding
+    // event on the cell
+    for (const propName in this.props) {
+      if (propName.lastIndexOf(prefix, 0) === 0) {
+        const eventName = propName.substring(prefix.length);
+        cellProps["on".concat(eventName)] = (e) => {
+          this.handleEvent(propName, e, date, modifiers);
+        }
+      }
+    }
+    return cellProps;
+  }
 
-    const caption = React.cloneElement(captionElement, {
-      date, localeUtils, locale,
-      onClick: onCaptionClick ? e => this.handleCaptionClick(e, date) : null
-    });
+  renderMonth(date, i) {
+    const { locale, localeUtils, captionElement } = this.props;
+
+    const captionProps = this.cellEventProps("onCaption", date);
+    captionProps["date"] = date;
+    captionProps["localeUtils"] = localeUtils;
+    captionProps["locale"] = locale;
+
+    const caption = React.cloneElement(captionElement, captionProps);
 
     return (
       <div
@@ -424,8 +546,7 @@ export default class DayPicker extends Component {
       return <div key={ `outside-${key}` } className={ className } />;
     }
 
-    const { onDayMouseEnter, onDayMouseLeave, onDayClick }
-      = this.props;
+    const { onDayClick } = this.props;
     let tabIndex = null;
     if (onDayClick && !isOutside) {
       tabIndex = -1;
@@ -439,20 +560,20 @@ export default class DayPicker extends Component {
     const ariaLabel = localeUtils.formatDay(day, locale);
     const ariaDisabled = isOutside ? "true" : "false";
 
+    const dayEventProps = this.cellEventProps("onDay", day, modifiers);
+    if (!dayEventProps["onDayKeyDown"]) {
+      dayEventProps["onKeyDown"] = (e) => {
+        this.handleEvent("onDayKeyDown", e, day, modifiers);
+      }
+    }
+
     return (
       <div key={ key } className={ className }
         tabIndex={ tabIndex }
         role="gridcell"
         aria-label={ ariaLabel }
         aria-disabled={ ariaDisabled }
-        onKeyDown={
-          (e) => this.handleDayKeyDown(e, day, modifiers) }
-        onMouseEnter= { onDayMouseEnter ?
-          (e) => this.handleDayMouseEnter(e, day, modifiers) : null }
-        onMouseLeave= { onDayMouseLeave ?
-          (e) => this.handleDayMouseLeave(e, day, modifiers) : null }
-        onClick= { onDayClick ?
-          (e) => this.handleDayClick(e, day, modifiers) : null }
+        {...dayEventProps}
         >
         { this.props.renderDay(day) }
       </div>
